@@ -56,7 +56,7 @@ function ContactForm({existingContact = {}, updateCallback}) {
         <label htmlFor="email">Eamil:</label>
         <input
           type="text"
-          id="eamil"
+          id=""email
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
