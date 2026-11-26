@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:5000";
+
 function ContactForm({existingContact = {}, updateCallback}) {
   const [firstName, setFirstName] = useState(existingContact.firstName || "");
   const [lastName, setLastName] = useState(existingContact.lastName || "");
@@ -16,7 +18,7 @@ function ContactForm({existingContact = {}, updateCallback}) {
       lastName,
       email
     }
-    const url = "http://127.0.0.1:5000/" + (updating ? `update_contact/${existingContact.id}` : "create_contact")
+    const url = `${API_URL}/` + (updating ? `update_contact/${existingContact.id}` : "create_contact")
     const options = {
       method: updating ? "PATCH" : "POST",
       headers: {

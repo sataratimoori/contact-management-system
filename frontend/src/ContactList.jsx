@@ -1,4 +1,5 @@
 import React from 'react'
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:5000";
 
 function ContactList({contacts, updateContact, updateCallback}) {
     const onDelete = async (id) => {
@@ -6,7 +7,7 @@ function ContactList({contacts, updateContact, updateCallback}) {
             const options = {
                 method: "DELETE"
             }
-            const response = await fetch(`http://127.0.0.1:5000/delete_contact/${id}`, options)
+            const response = await fetch(`${API_URL}/delete_contact/${id}`, options)
             if (response.status === 200) {
                 updateCallback() 
             }else {

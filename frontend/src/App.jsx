@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ContactList from "./ContactList";
 import "./App.css";
 import ContactForm from "./ContactForm";
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:5000";
 
 function App() {
   const [contacts, setContacts] = useState([]);
@@ -13,7 +14,7 @@ function App() {
   }, []);
 
   const fetchContacts = async () => {
-    const response = await fetch("http://127.0.0.1:5000/contacts");
+    const response = await fetch(`${API_URL}/contacts`);
     const data = await response.json();
     setContacts(data.contacts);
   };
