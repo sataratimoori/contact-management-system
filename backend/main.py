@@ -59,7 +59,8 @@ def delete_contact(user_id):
     return jsonify({"message": "User deleted!"}), 200
 
 
+with app.app_context():
+    db.create_all()
+
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
